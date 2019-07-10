@@ -1,0 +1,34 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="actionBarStyle">@style/AppActionBar</item>
+    </style>
+
+    <!-- Action bar -->
+    <style name="AppActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="elevation">0dp</item>
+        <item name="background">@color/offWhite</item>
+        <item name="titleTextStyle">@style/AppActionBar.Title</item>
+    </style>
+
+    <!-- Text -->
+    <style name="TextRegular" parent="TextAppearance.AppCompat.Body1">
+        <item name="fontFamily">@font/din_pro_regular</item>
+    </style>
+
+    <style name="TextLight" parent="TextAppearance.AppCompat.Small">
+        <item name="fontFamily">@font/din_pro_light</item>
+    </style>
+    
+    <style name="TextMedium" parent="TextAppearance.AppCompat.Medium">
+        <item name="fontFamily">@font/din_pro_medium</item>
+    </style>
+
+    <style name="AppActionBar.Title" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="fontFamily">@font/din_pro_medium</item>
+    </style>
+</resources>

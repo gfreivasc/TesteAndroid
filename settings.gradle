@@ -1,0 +1,5 @@
+rootProject.name='IBMTest'
+include ':app'
+include ':libraries:design'
+include ':features:form'
+include ':libraries:core'

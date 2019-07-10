@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: "$rootDir/buildSystem/androidlib.gradle"
+
+dependencies {
+    implementation project(':libraries:design')
+
+    implementation packages.kotlin
+    implementation packages.androidx.appcompat
+    implementation packages.androidx.coreKtx
+    implementation packages.androidx.constraint
+
+    testImplementation packages.junit5.values()
+    androidTestImplementation packages.androidTest.values()
+}

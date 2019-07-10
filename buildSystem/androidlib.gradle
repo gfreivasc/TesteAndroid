@@ -1,0 +1,7 @@
+apply from: "$rootDir/buildSystem/android.gradle"
+
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+}
