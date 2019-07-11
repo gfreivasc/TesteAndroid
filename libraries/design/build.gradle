@@ -7,6 +7,7 @@ apply from: "$rootDir/buildSystem/androidlib.gradle"
 dependencies {
     implementation packages.kotlin
     implementation packages.androidx.appcompat
+    implementation packages.androidx.constraint
 
     testImplementation packages.junit5.values()
     androidTestImplementation packages.androidTest.values()

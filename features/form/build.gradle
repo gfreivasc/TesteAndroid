@@ -12,6 +12,7 @@ dependencies {
     implementation packages.androidx.coreKtx
     implementation packages.androidx.constraint
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation packages.junit5.values()
     androidTestImplementation packages.androidTest.values()
 }

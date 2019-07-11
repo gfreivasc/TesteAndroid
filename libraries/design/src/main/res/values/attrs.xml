@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomNavigationBar">
+        <attr name="firstItem" format="reference|string" />
+        <attr name="secondItem" format="reference|string" />
+        <attr name="position" format="enum">
+            <enum name="first" value="0" />
+            <enum name="second" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

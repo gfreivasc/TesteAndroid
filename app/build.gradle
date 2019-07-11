@@ -20,12 +20,16 @@ android {
 dependencies {
     implementation project(':features:form')
 
+    implementation project(':libraries:core')
     implementation project(':libraries:design')
 
     implementation packages.kotlin
     implementation packages.androidx.appcompat
     implementation packages.androidx.coreKtx
+    implementation packages.androidx.viewpager2
 
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation packages.junit5.values()
     androidTestImplementation packages.androidTest.values()
 }

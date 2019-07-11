@@ -6,10 +6,4 @@
         android:minSdkVersion="19"
         android:targetSdkVersion="29" />
 
-    <application android:theme="@style/AppTheme" >
-        <activity
-            android:name="com.gabrielfv.ibmtest.features.form.FormActivity"
-            android:screenOrientation="portrait" />
-    </application>
-
 </manifest>

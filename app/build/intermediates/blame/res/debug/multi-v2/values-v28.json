@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\gfrei\\AndroidStudioProjects\\IBMTest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v28\\values-v28.xml",
+            "outputFile": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\gfrei\\.gradle\\caches\\transforms-2\\files-2.1\\af0a9d3de64bfe0745eee3d82ebd38ad\\appcompat-1.0.2\\res\\values-v28\\values-v28.xml",
+                    "source": "/Users/gafreva/.gradle/caches/transforms-2/files-2.1/af0a9d3de64bfe0745eee3d82ebd38ad/appcompat-1.0.2/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

@@ -1,6 +1,6 @@
 R_DEF: Internal format may change without notice
 local
-id textView
-layout activity_form
+layout fragment_form
 string app_name
+string hello_blank_fragment
 string hello_world
