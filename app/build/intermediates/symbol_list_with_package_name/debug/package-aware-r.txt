@@ -11,6 +11,8 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+anim opacity_bounce_in
+anim opacity_bounce_out
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -651,6 +653,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable button_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable notification_action_background
@@ -865,6 +868,7 @@ id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
+id textView
 id time
 id title
 id titleDividerNoCustom
@@ -986,6 +990,11 @@ style Animation_AppCompat_Dialog
 style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style AppTheme
+style AppTheme_Button
+style AppTheme_TextLight
+style AppTheme_TextMedium
+style AppTheme_TextMedium_Inverse
+style AppTheme_TextRegular
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -1231,9 +1240,6 @@ style TextAppearance_Compat_Notification_Title_Media
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
-style TextLight
-style TextMedium
-style TextRegular
 style Theme_AppCompat
 style Theme_AppCompat_CompactMenu
 style Theme_AppCompat_DayNight

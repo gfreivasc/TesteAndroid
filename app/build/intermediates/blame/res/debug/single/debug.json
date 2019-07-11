@@ -108,6 +108,10 @@
         "source": "/Users/gafreva/.gradle/caches/transforms-2/files-2.1/c8f291d85cbce421c03bd458ddb302ee/media-1.0.0/res/layout/notification_template_big_media_custom.xml"
     },
     {
+        "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/anim_opacity_bounce_out.xml.flat",
+        "source": "/Users/gafreva/ASProjects/TesteAndroid/libraries/design/build/intermediates/packaged_res/debug/anim/opacity_bounce_out.xml"
+    },
+    {
         "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/layout-watch-v20_abc_alert_dialog_title_material.xml.flat",
         "source": "/Users/gafreva/.gradle/caches/transforms-2/files-2.1/af0a9d3de64bfe0745eee3d82ebd38ad/appcompat-1.0.2/res/layout-watch-v20/abc_alert_dialog_title_material.xml"
     },
@@ -146,6 +150,10 @@
     {
         "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/Users/gafreva/ASProjects/TesteAndroid/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/drawable_button_background.xml.flat",
+        "source": "/Users/gafreva/ASProjects/TesteAndroid/libraries/design/build/intermediates/packaged_res/debug/drawable/button_background.xml"
     },
     {
         "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
@@ -258,6 +266,10 @@
     {
         "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_title_material.xml.flat",
         "source": "/Users/gafreva/.gradle/caches/transforms-2/files-2.1/af0a9d3de64bfe0745eee3d82ebd38ad/appcompat-1.0.2/res/layout/abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/anim_opacity_bounce_in.xml.flat",
+        "source": "/Users/gafreva/ASProjects/TesteAndroid/libraries/design/build/intermediates/packaged_res/debug/anim/opacity_bounce_in.xml"
     },
     {
         "merged": "/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",

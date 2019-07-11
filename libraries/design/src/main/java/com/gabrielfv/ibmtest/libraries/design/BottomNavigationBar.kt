@@ -1,6 +1,8 @@
 package com.gabrielfv.ibmtest.libraries.design
 
 import android.content.Context
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -82,6 +84,12 @@ class BottomNavigationBar
         if (position == this.position) return
         ConstraintSet().apply {
             clone(view.bottomNavWrapper)
+
+            val transition = AutoTransition().apply {
+                duration = context.resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
+            }
+            TransitionManager.beginDelayedTransition(view.bottomNavWrapper, transition)
+
             switchTopMargin(position)
             moveHighlight(position)
             applyTo(view.bottomNavWrapper)
