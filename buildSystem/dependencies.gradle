@@ -7,7 +7,8 @@ project.ext {
             appcompat  : '1.0.2',
             ktx        : '1.0.2',
             constraint : '1.1.3',
-            viewpager2 : '1.0.0-alpha06'
+            viewpager2 : '1.0.0-alpha06',
+            material   : '1.1.0-alpha07'
         ],
 
         junit5: [
@@ -28,7 +29,8 @@ project.ext {
             appcompat  : "androidx.appcompat:appcompat:$versions.androidx.appcompat",
             coreKtx    : "androidx.core:core-ktx:$versions.androidx.ktx",
             constraint : "androidx.constraintlayout:constraintlayout:$versions.androidx.constraint",
-            viewpager2 : "androidx.viewpager2:viewpager2:$versions.androidx.viewpager2"
+            viewpager2 : "androidx.viewpager2:viewpager2:$versions.androidx.viewpager2",
+            material   : "com.google.android.material:material:$versions.androidx.material"
         ],
 
         junit5: [

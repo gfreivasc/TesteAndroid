@@ -1,9 +1,13 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlNormal">@color/lightGray</item>
+        <item name="colorControlActivated">@color/gray</item>
+        <item name="colorControlHighlight">@color/gray</item>
     </style>
 
-    <!-- Text -->
+    <!-- Text Generic -->
     <style name="AppTheme.TextRegular" parent="TextAppearance.AppCompat.Body1">
         <item name="fontFamily">@font/din_pro_regular</item>
     </style>
@@ -17,8 +21,23 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- Text Coloring -->
     <style name="AppTheme.TextMedium.Inverse" parent="AppTheme.TextMedium">
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.TextMedium.Contrast" parent="AppTheme.TextMedium">
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
+
+    <style name="AppTheme.TextRegular.Light" parent="AppTheme.TextRegular">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <!-- Text Specific -->
+    <style name="AppTheme.TextMedium.Contrast.InputText" parent="AppTheme.TextMedium.Contrast">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <!-- Bottom Navigation -->
@@ -31,7 +50,14 @@
     <style name="AppTheme.Button" parent="@style/Widget.AppCompat.Button.Borderless">
         <item name="android:background">@drawable/button_background</item>
         <item name="android:textAppearance">@style/AppTheme.TextMedium.Inverse</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:textAlignment">center</item>
         <item name="android:layout_height">50dp</item>
+    </style>
+
+    <!-- Text Input -->
+    <style name="AppTheme.InputText">
+        <item name="android:textAppearance">@style/AppTheme.TextMedium.Contrast.InputText</item>
+        <item name="android:background">@drawable/input_text_selector</item>
     </style>
 </resources>

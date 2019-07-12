@@ -5,12 +5,14 @@ apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/buildSystem/androidlib.gradle"
 
 dependencies {
+    implementation project(':libraries:core')
     implementation project(':libraries:design')
 
     implementation packages.kotlin
     implementation packages.androidx.appcompat
     implementation packages.androidx.coreKtx
     implementation packages.androidx.constraint
+    implementation packages.androidx.material
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation packages.junit5.values()
