@@ -52,10 +52,6 @@ class FormFragment : Fragment(), FormContract.View {
         }
     }
 
-    override fun initPresenter(presenter: FormContract.Presenter) {
-        this.presenter = presenter
-    }
-
     private fun startClearButtons() {
         setOf(wrapperNameInput, wrapperEmailInput, wrapperPhoneInput).forEach { inputLayout ->
             inputLayout.setEndIconOnClickListener {

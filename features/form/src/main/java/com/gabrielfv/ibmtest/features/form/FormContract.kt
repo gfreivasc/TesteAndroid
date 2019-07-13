@@ -5,8 +5,6 @@ import com.gabrielfv.ibmtest.libraries.core.CorePresenter
 interface FormContract {
 
     interface View {
-        fun initPresenter(presenter: Presenter)
-
         fun emailValidation(valid: Boolean)
     }
 
