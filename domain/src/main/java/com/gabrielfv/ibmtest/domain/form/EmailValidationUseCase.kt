@@ -4,15 +4,13 @@ import javax.inject.Inject
 
 class EmailValidationUseCase @Inject constructor() {
 
-    operator fun invoke(params: Params): Boolean = emailRegex.matches(params.email)
-
-    data class Params(val email: String)
+    operator fun invoke(email: String): Boolean = emailRegex.matches(email)
 
     companion object {
         /**
          * RFC 5322 Official Standard
          */
-        val emailRegex = Regex("""
+        private val emailRegex = Regex("""
             (?:[a-z0-9!#${'$'}%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#${'$'}%&'*+/=?^_`{|}~-]+)*|"
             (?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")
             @(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:

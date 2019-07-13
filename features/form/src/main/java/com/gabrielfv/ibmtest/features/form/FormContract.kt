@@ -6,9 +6,11 @@ interface FormContract {
 
     interface View {
         fun emailValidation(valid: Boolean)
+        fun phoneValidation(valid: Boolean)
     }
 
     interface Presenter : CorePresenter {
         fun validateEmail(email: String)
+        fun validatePhone(phone: String)
     }
 }

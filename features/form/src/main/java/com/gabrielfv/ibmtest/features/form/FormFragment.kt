@@ -8,24 +8,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.gabrielfv.ibmtest.features.form.text.MaskWatcher
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_form.*
 import javax.inject.Inject
 
-/**
- * A simple [Fragment] subclass.
- */
 class FormFragment : Fragment(), FormContract.View {
     @Inject
     lateinit var presenter: FormContract.Presenter
 
-    private val emailTextWatcher = object : TextWatcher {
-        override fun afterTextChanged(text: Editable?) {
-            presenter.validateEmail(text.toString())
-        }
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
-    }
+    private val phoneWatcher = MaskWatcher(PHONE_MASK)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,9 +31,7 @@ class FormFragment : Fragment(), FormContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        emailInput.addTextChangedListener(emailTextWatcher)
-        startClearButtons()
+        initTextFields()
     }
 
     override fun emailValidation(valid: Boolean) {
@@ -52,11 +42,36 @@ class FormFragment : Fragment(), FormContract.View {
         }
     }
 
-    private fun startClearButtons() {
+    override fun phoneValidation(valid: Boolean) {
+        if (valid) {
+            wrapperPhoneInput.setSuccess()
+        } else {
+            wrapperPhoneInput.setError()
+        }
+    }
+
+    private fun initTextFields() {
         setOf(wrapperNameInput, wrapperEmailInput, wrapperPhoneInput).forEach { inputLayout ->
             inputLayout.setEndIconOnClickListener {
                 inputLayout.editText?.text?.clear()
             }
         }
+
+        nameInput.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) wrapperNameInput.setSuccess()
+        }
+
+        emailInput.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) presenter.validateEmail(emailInput.text.toString())
+        }
+
+        phoneInput.addTextChangedListener(phoneWatcher)
+        phoneInput.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) presenter.validatePhone(phoneInput.text.toString())
+        }
+    }
+
+    companion object {
+        const val PHONE_MASK = "(##) #####-####"
     }
 }

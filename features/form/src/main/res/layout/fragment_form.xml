@@ -37,6 +37,7 @@
         app:layout_constraintTop_toBottomOf="@id/header">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/AppTheme.InputText"
@@ -94,10 +95,12 @@
         app:layout_constraintTop_toBottomOf="@+id/wrapperEmailInput">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneInput"
             style="@style/AppTheme.InputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
+            android:maxLength="15"
             tools:text="(11) 99111-1111" />
 
     </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
