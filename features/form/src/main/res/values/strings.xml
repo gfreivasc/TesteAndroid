@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="name_field_hint">Nome</string>
+    <string name="email_field_hint">Email</string>
+    <string name="phone_field_hint">Telefone</string>
+    <string name="acs_clear_field">limpar campo</string>
 </resources>

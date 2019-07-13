@@ -2,9 +2,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="colorControlNormal">@color/lightGray</item>
-        <item name="colorControlActivated">@color/gray</item>
-        <item name="colorControlHighlight">@color/gray</item>
+        <item name="colorControlNormal">@color/lightGrey</item>
+        <item name="colorControlActivated">@color/grey</item>
+        <item name="colorControlHighlight">@color/grey</item>
     </style>
 
     <!-- Text Generic -->
@@ -27,11 +27,11 @@
     </style>
 
     <style name="AppTheme.TextMedium.Contrast" parent="AppTheme.TextMedium">
-        <item name="android:textColor">@color/darkGray</item>
+        <item name="android:textColor">@color/darkGrey</item>
     </style>
 
     <style name="AppTheme.TextRegular.Light" parent="AppTheme.TextRegular">
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/grey</item>
     </style>
 
     <!-- Text Specific -->

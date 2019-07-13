@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
         android:id="@+id/wrapperNameInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,6 +26,12 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/name_field_hint"
         app:hintTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:errorTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_text_clear"
+        app:endIconContentDescription="@string/acs_clear_field"
+        app:endIconTintMode="screen"
+        app:endIconTint="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header">
@@ -34,11 +40,69 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/AppTheme.InputText"
+            android:inputType="textPersonName"
             tools:text="José da Silva Oliveira" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
 
-    <com.gabrielfv.ibmtest.libraries.design.Button
+    <com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
+        android:id="@+id/wrapperEmailInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/email_field_hint"
+        app:hintTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:errorTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_text_clear"
+        app:endIconContentDescription="@string/acs_clear_field"
+        app:endIconTintMode="screen"
+        app:endIconTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wrapperNameInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInput"
+            style="@style/AppTheme.InputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            tools:text="josedasilva@gmail.com" />
+
+    </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
+
+    <com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
+        android:id="@+id/wrapperPhoneInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/phone_field_hint"
+        app:hintTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:errorTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_text_clear"
+        app:endIconContentDescription="@string/acs_clear_field"
+        app:endIconTintMode="screen"
+        app:endIconTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wrapperEmailInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/AppTheme.InputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            tools:text="(11) 99111-1111" />
+
+    </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
+
+    <com.gabrielfv.ibmtest.libraries.design.widgets.Button
         style="@style/AppTheme.Button"
         android:layout_margin="30dp"
         android:layout_width="0dp"

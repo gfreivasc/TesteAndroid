@@ -1,6 +1,12 @@
 R_DEF: Internal format may change without notice
 local
+id emailInput
 id header
+id wrapperEmailInput
 id wrapperNameInput
+id wrapperPhoneInput
 layout fragment_form
+string acs_clear_field
+string email_field_hint
 string name_field_hint
+string phone_field_hint

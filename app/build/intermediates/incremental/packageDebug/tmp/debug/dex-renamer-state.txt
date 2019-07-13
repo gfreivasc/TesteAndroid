@@ -1,4 +1,4 @@
-#Fri Jul 12 00:25:20 BRT 2019
-base.0=/Users/gafreva/ASProjects/TesteAndroid/app/build/intermediates/dex/debug/out/classes.dex
+#Sat Jul 13 17:08:14 BRT 2019
+base.0=C\:\\Users\\Gabriel Vasconcelos\\AndroidStudioProjects\\TesteAndroid\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

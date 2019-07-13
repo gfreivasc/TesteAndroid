@@ -704,6 +704,8 @@ attr windowNoTitle
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
+bool abc_config_closeDialogWhenTouchOutside
+bool abc_config_showMenuShortcutsWhenKeyboardPresent
 bool mtrl_btn_textappearance_all_caps
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
@@ -728,6 +730,7 @@ color abc_tint_default
 color abc_tint_edittext
 color abc_tint_seek_thumb
 color abc_tint_spinner
+color abc_tint_switch_thumb
 color abc_tint_switch_track
 color accent_material_dark
 color accent_material_light
@@ -748,7 +751,7 @@ color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
 color colorAccent
-color darkGray
+color darkGrey
 color darkShade
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
@@ -796,10 +799,11 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
-color gray
+color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
-color lightGray
+color lightGrey
+color limeGreen
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -880,6 +884,7 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color pulseRed
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -906,6 +911,7 @@ dimen abc_action_bar_elevation_material
 dimen abc_action_bar_icon_vertical_padding_material
 dimen abc_action_bar_overflow_padding_end_material
 dimen abc_action_bar_overflow_padding_start_material
+dimen abc_action_bar_progress_bar_size
 dimen abc_action_bar_stacked_max_height
 dimen abc_action_bar_stacked_tab_max_width
 dimen abc_action_bar_subtitle_bottom_margin_material
@@ -931,6 +937,7 @@ dimen abc_dialog_fixed_width_major
 dimen abc_dialog_fixed_width_minor
 dimen abc_dialog_list_padding_bottom_no_buttons
 dimen abc_dialog_list_padding_top_no_title
+dimen abc_dialog_list_padding_vertical_material
 dimen abc_dialog_min_width_major
 dimen abc_dialog_min_width_minor
 dimen abc_dialog_padding_material
@@ -1284,6 +1291,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_clear
 drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
 drawable ic_menu_arrow_down_black_24dp
@@ -1292,9 +1300,12 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_text_clear
+drawable input_text_error_background
 drawable input_text_focused_background
 drawable input_text_selector
 drawable input_text_unfocused_background
+drawable input_text_valid_background
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1383,8 +1394,10 @@ id actions
 id activity_chooser_view_content
 id add
 id alertTitle
+id always
 id async
 id auto
+id beginning
 id blocking
 id bottom
 id bottomNavWrapper
@@ -1399,6 +1412,7 @@ id chip
 id chip_group
 id chronometer
 id clear_text
+id collapseActionView
 id confirm_button
 id container
 id content
@@ -1416,8 +1430,10 @@ id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
 id dialog_button
+id disableHome
 id dropdown_menu
 id edit_query
+id emailInput
 id end
 id end_padder
 id expand_activities_button
@@ -1434,8 +1450,10 @@ id gone
 id group_divider
 id header
 id home
+id homeAsUp
 id icon
 id icon_group
+id ifRoom
 id image
 id info
 id invisible
@@ -1451,6 +1469,7 @@ id list_item
 id masked
 id media_actions
 id message
+id middle
 id mini
 id month_bar
 id month_drop_select
@@ -1472,6 +1491,7 @@ id navigationHighlight
 id navigationText1
 id navigationText2
 id navigation_header_container
+id never
 id none
 id normal
 id notification_background
@@ -1518,6 +1538,9 @@ id second
 id select_dialog_listview
 id selected
 id shortcut
+id showCustom
+id showHome
+id showTitle
 id slide
 id smallLabel
 id snackbar_action
@@ -1568,11 +1591,15 @@ id unchecked
 id uniform
 id unlabeled
 id up
+id useLogo
 id view_offset_helper
 id visible
+id withText
 id wrap
 id wrap_content
+id wrapperEmailInput
 id wrapperNameInput
+id wrapperPhoneInput
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -1604,6 +1631,7 @@ interpolator mtrl_linear
 interpolator mtrl_linear_out_slow_in
 layout abc_action_bar_title_item
 layout abc_action_bar_up_container
+layout abc_action_bar_view_list_nav_layout
 layout abc_action_menu_item_layout
 layout abc_action_menu_layout
 layout abc_action_mode_bar
@@ -1692,6 +1720,8 @@ layout test_toolbar_elevation
 layout test_toolbar_surface
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
+string abc_action_bar_home_description_format
+string abc_action_bar_home_subtitle_description_format
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
 string abc_action_mode_done
@@ -1730,6 +1760,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string acs_clear_field
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
@@ -1739,6 +1770,7 @@ string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
 string contact
+string email_field_hint
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -1762,6 +1794,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string phone_field_hint
 string search_menu_title
 string status_bar_notification_info_overflow
 string submit
@@ -1888,6 +1921,11 @@ style Base_Theme_MaterialComponents_Light_Dialog_Alert
 style Base_Theme_MaterialComponents_Light_Dialog_Bridge
 style Base_Theme_MaterialComponents_Light_Dialog_FixedSize
 style Base_Theme_MaterialComponents_Light_Dialog_MinWidth
+style Base_V11_ThemeOverlay_AppCompat_Dialog
+style Base_V11_Theme_AppCompat_Dialog
+style Base_V11_Theme_AppCompat_Light_Dialog
+style Base_V12_Widget_AppCompat_AutoCompleteTextView
+style Base_V12_Widget_AppCompat_EditText
 style Base_V14_ThemeOverlay_MaterialComponents_Dialog
 style Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert
 style Base_V14_ThemeOverlay_MaterialComponents_MaterialAlertDialog
@@ -2015,6 +2053,10 @@ style Platform_MaterialComponents_Light_Dialog
 style Platform_ThemeOverlay_AppCompat
 style Platform_ThemeOverlay_AppCompat_Dark
 style Platform_ThemeOverlay_AppCompat_Light
+style Platform_V11_AppCompat
+style Platform_V11_AppCompat_Light
+style Platform_V14_AppCompat
+style Platform_V14_AppCompat_Light
 style Platform_V21_AppCompat
 style Platform_V21_AppCompat_Light
 style Platform_V25_AppCompat
@@ -2074,6 +2116,16 @@ style TextAppearance_AppCompat_Light_Widget_PopupMenu_Small
 style TextAppearance_AppCompat_Medium
 style TextAppearance_AppCompat_Medium_Inverse
 style TextAppearance_AppCompat_Menu
+style TextAppearance_AppCompat_Notification
+style TextAppearance_AppCompat_Notification_Info
+style TextAppearance_AppCompat_Notification_Info_Media
+style TextAppearance_AppCompat_Notification_Line2
+style TextAppearance_AppCompat_Notification_Line2_Media
+style TextAppearance_AppCompat_Notification_Media
+style TextAppearance_AppCompat_Notification_Time
+style TextAppearance_AppCompat_Notification_Time_Media
+style TextAppearance_AppCompat_Notification_Title
+style TextAppearance_AppCompat_Notification_Title_Media
 style TextAppearance_AppCompat_SearchResult_Subtitle
 style TextAppearance_AppCompat_SearchResult_Title
 style TextAppearance_AppCompat_Small
@@ -2135,6 +2187,11 @@ style TextAppearance_MaterialComponents_Headline6
 style TextAppearance_MaterialComponents_Overline
 style TextAppearance_MaterialComponents_Subtitle1
 style TextAppearance_MaterialComponents_Subtitle2
+style TextAppearance_StatusBar_EventContent
+style TextAppearance_StatusBar_EventContent_Info
+style TextAppearance_StatusBar_EventContent_Line2
+style TextAppearance_StatusBar_EventContent_Time
+style TextAppearance_StatusBar_EventContent_Title
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
@@ -2311,6 +2368,8 @@ style Widget_AppCompat_ListPopupWindow
 style Widget_AppCompat_ListView
 style Widget_AppCompat_ListView_DropDown
 style Widget_AppCompat_ListView_Menu
+style Widget_AppCompat_NotificationActionContainer
+style Widget_AppCompat_NotificationActionText
 style Widget_AppCompat_PopupMenu
 style Widget_AppCompat_PopupMenu_Overflow
 style Widget_AppCompat_PopupWindow

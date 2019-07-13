@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 apply from: "$rootDir/buildSystem/android.gradle"
 
@@ -27,6 +28,10 @@ dependencies {
     implementation packages.androidx.appcompat
     implementation packages.androidx.coreKtx
     implementation packages.androidx.viewpager2
+
+    implementation packages.dagger.values()
+    kapt packages.daggerKapt.values()
+
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

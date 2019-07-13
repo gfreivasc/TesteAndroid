@@ -4,10 +4,18 @@ apply plugin: 'kotlin-android-extensions'
 
 apply from: "$rootDir/buildSystem/androidlib.gradle"
 
+android {
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+
 dependencies {
     implementation packages.kotlin
     implementation packages.androidx.appcompat
     implementation packages.androidx.constraint
+    implementation packages.androidx.material
+    implementation packages.androidx.vectordrawable
 
     testImplementation packages.junit5.values()
     androidTestImplementation packages.androidTest.values()

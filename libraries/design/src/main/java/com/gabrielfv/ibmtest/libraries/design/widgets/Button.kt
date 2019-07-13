@@ -1,10 +1,11 @@
-package com.gabrielfv.ibmtest.libraries.design
+package com.gabrielfv.ibmtest.libraries.design.widgets
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import com.gabrielfv.ibmtest.libraries.design.R
 
 class Button
 @JvmOverloads constructor(
@@ -19,8 +20,12 @@ class Button
     }
 
     private fun initAnimation() {
-        val inAnim = AnimationUtils.loadAnimation(context, R.anim.opacity_bounce_in)
-        val outAnim = AnimationUtils.loadAnimation(context, R.anim.opacity_bounce_out)
+        val inAnim = AnimationUtils.loadAnimation(context,
+            R.anim.opacity_bounce_in
+        )
+        val outAnim = AnimationUtils.loadAnimation(context,
+            R.anim.opacity_bounce_out
+        )
 
         inAnim.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) { }

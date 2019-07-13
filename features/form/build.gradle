@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 apply from: "$rootDir/buildSystem/androidlib.gradle"
 
@@ -13,6 +14,9 @@ dependencies {
     implementation packages.androidx.coreKtx
     implementation packages.androidx.constraint
     implementation packages.androidx.material
+
+    implementation packages.dagger.values()
+    kapt packages.daggerKapt.values()
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation packages.junit5.values()

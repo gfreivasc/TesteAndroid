@@ -1,25 +1,25 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml:2:1-4:12
-INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml:2:1-4:12
+ADDED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml:2:1-4:12
+INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml:2:1-4:12
+INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml:2:1-4:12
 	package
-		ADDED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml:2:11-56
-		INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-		INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
+		ADDED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml:2:11-56
+		INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml:2:1-4:12
+		ADDED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml:2:1-4:12
 uses-sdk
-INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
+INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-		ADDED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-		INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-		ADDED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
-		INJECTED from /Users/gafreva/ASProjects/TesteAndroid/features/form/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Gabriel Vasconcelos\AndroidStudioProjects\TesteAndroid\features\form\src\main\AndroidManifest.xml
