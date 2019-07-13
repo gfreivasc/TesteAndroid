@@ -2,6 +2,8 @@ package com.gabrielfv.ibmtest.features.form
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +19,14 @@ class FormFragment : Fragment(), FormContract.View {
     @Inject
     lateinit var presenter: FormContract.Presenter
 
+    private val emailTextWatcher = object : TextWatcher {
+        override fun afterTextChanged(text: Editable?) {
+            presenter.validateEmail(text.toString())
+        }
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,11 +40,7 @@ class FormFragment : Fragment(), FormContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        emailInput.setOnTouchListener { _, _ ->
-            presenter.validateEmail("")
-            true
-        }
-
+        emailInput.addTextChangedListener(emailTextWatcher)
         startClearButtons()
     }
 

@@ -1,5 +1,7 @@
 package com.gabrielfv.ibmtest.features.form.di
 
+import com.gabrielfv.ibmtest.domain.di.UseCaseModule
+import com.gabrielfv.ibmtest.domain.form.EmailValidationUseCase
 import com.gabrielfv.ibmtest.features.form.FormContract
 import com.gabrielfv.ibmtest.features.form.FormFragment
 import com.gabrielfv.ibmtest.features.form.FormPresenter
@@ -12,7 +14,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class FormModule {
 
     @FeatureScope
-    @ContributesAndroidInjector(modules = [Providers::class])
+    @ContributesAndroidInjector(modules = [Providers::class, UseCaseModule::class])
     abstract fun contributesInjector(): FormFragment
 
     @Module
@@ -23,6 +25,9 @@ abstract class FormModule {
 
         @FeatureScope
         @Provides
-        fun providesPresenter(view: FormContract.View): FormContract.Presenter = FormPresenter(view)
+        fun providesPresenter(
+            view: FormContract.View,
+            emailValidation: EmailValidationUseCase
+        ): FormContract.Presenter = FormPresenter(view, emailValidation)
     }
 }
