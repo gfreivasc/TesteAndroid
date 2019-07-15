@@ -5,4 +5,6 @@
     <string name="phone_field_hint">Telefone</string>
     <string name="acs_clear_field">limpar campo</string>
     <string name="send_new_message">Enviar nova mensagem</string>
+    <string name="thank_you">Obrigado</string>
+    <string name="success_message">Mensagem enviada com sucesso :)</string>
 </resources>

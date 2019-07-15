@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gabrielfv.ibmtest.features.form.success.SuccessView
+import com.gabrielfv.ibmtest.features.form.success.SuccessFragment
 import com.gabrielfv.ibmtest.features.form.text.MaskWatcher
 import com.gabrielfv.ibmtest.libraries.core.ViewPagerStackController
 import dagger.android.support.AndroidSupportInjection
@@ -63,7 +63,7 @@ class FormFragment(
 
     override fun formValidation(valid: Boolean) {
         if (valid) {
-            stackController.pushFragment(position) { SuccessView(position, stackController) }
+            stackController.pushFragment(position) { SuccessFragment(position, stackController) }
         } else {
 
         }

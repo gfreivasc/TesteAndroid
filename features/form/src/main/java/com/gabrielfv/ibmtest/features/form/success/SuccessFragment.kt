@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.gabrielfv.ibmtest.features.form.R
 import com.gabrielfv.ibmtest.libraries.core.ViewPagerStackController
-import kotlinx.android.synthetic.main.view_success.*
+import kotlinx.android.synthetic.main.fragment_success.*
 
-class SuccessView(
+class SuccessFragment(
     private val position: Int,
     private val stackController: ViewPagerStackController
 ) : Fragment() {
@@ -18,12 +18,12 @@ class SuccessView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.view_success, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_success, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textView3.setOnClickListener {
+        newMessageLink.setOnClickListener {
             stackController.popFragment(position)
         }
     }
