@@ -1,7 +1,8 @@
 package com.gabrielfv.ibmtest.features.form.di
 
-import com.gabrielfv.ibmtest.domain.form.EmailValidationUseCase
-import com.gabrielfv.ibmtest.domain.form.PhoneValidationUseCase
+import com.gabrielfv.ibmtest.domain.form.ValidateEmailUseCase
+import com.gabrielfv.ibmtest.domain.form.ValidateFormUseCase
+import com.gabrielfv.ibmtest.domain.form.ValidatePhoneUseCase
 import com.gabrielfv.ibmtest.features.form.FormContract
 import com.gabrielfv.ibmtest.features.form.FormFragment
 import com.gabrielfv.ibmtest.features.form.FormPresenter
@@ -9,7 +10,6 @@ import com.gabrielfv.ibmtest.libraries.core.di.FeatureScope
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
-import javax.inject.Named
 
 @Module
 abstract class FormModule {
@@ -28,8 +28,11 @@ abstract class FormModule {
         @Provides
         fun providesPresenter(
             view: FormContract.View,
-            emailValidation: EmailValidationUseCase,
-            phoneValidation: PhoneValidationUseCase
-        ): FormContract.Presenter = FormPresenter(view, emailValidation, phoneValidation)
+            validateEmailUseCase: ValidateEmailUseCase,
+            validatePhoneUseCase: ValidatePhoneUseCase,
+            validateFormUseCase: ValidateFormUseCase
+        ): FormContract.Presenter = FormPresenter(
+            view, validateEmailUseCase, validatePhoneUseCase, validateFormUseCase
+        )
     }
 }

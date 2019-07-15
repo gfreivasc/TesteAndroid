@@ -106,6 +106,7 @@
     </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
 
     <com.gabrielfv.ibmtest.libraries.design.widgets.Button
+        android:id="@+id/submit"
         style="@style/AppTheme.Button"
         android:layout_margin="30dp"
         android:layout_width="0dp"

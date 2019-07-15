@@ -2,18 +2,21 @@ package com.gabrielfv.ibmtest.features.form
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.gabrielfv.ibmtest.features.form.success.SuccessView
 import com.gabrielfv.ibmtest.features.form.text.MaskWatcher
+import com.gabrielfv.ibmtest.libraries.core.ViewPagerStackController
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_form.*
 import javax.inject.Inject
 
-class FormFragment : Fragment(), FormContract.View {
+class FormFragment(
+    private val position: Int,
+    private val stackController: ViewPagerStackController
+) : Fragment(), FormContract.View {
     @Inject
     lateinit var presenter: FormContract.Presenter
 
@@ -32,6 +35,14 @@ class FormFragment : Fragment(), FormContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTextFields()
+        submit.setOnClickListener {
+            presenter.validateForm(
+                nameInput.text.toString(),
+                emailInput.text.toString(),
+                phoneInput.text.toString(),
+                true
+            )
+        }
     }
 
     override fun emailValidation(valid: Boolean) {
@@ -47,6 +58,14 @@ class FormFragment : Fragment(), FormContract.View {
             wrapperPhoneInput.setSuccess()
         } else {
             wrapperPhoneInput.setError()
+        }
+    }
+
+    override fun formValidation(valid: Boolean) {
+        if (valid) {
+            stackController.pushFragment(position) { SuccessView(position, stackController) }
+        } else {
+
         }
     }
 

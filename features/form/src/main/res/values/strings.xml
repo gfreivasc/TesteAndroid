@@ -4,4 +4,5 @@
     <string name="email_field_hint">Email</string>
     <string name="phone_field_hint">Telefone</string>
     <string name="acs_clear_field">limpar campo</string>
+    <string name="send_new_message">Enviar nova mensagem</string>
 </resources>

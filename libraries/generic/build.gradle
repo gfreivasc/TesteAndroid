@@ -9,6 +9,7 @@ dependencies {
 
     implementation packages.kotlin
     implementation packages.androidx.appcompat
+    implementation packages.androidx.viewpager2
 
     testImplementation packages.junit5.values()
     androidTestImplementation packages.androidTest.values()

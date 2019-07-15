@@ -22,7 +22,7 @@ dependencies {
     implementation project(':domain')
     implementation project(':features:form')
 
-    implementation project(':libraries:core')
+    implementation project(':libraries:generic')
     implementation project(':libraries:design')
 
     implementation packages.kotlin

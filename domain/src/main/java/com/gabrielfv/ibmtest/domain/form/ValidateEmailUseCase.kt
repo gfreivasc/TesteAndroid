@@ -2,7 +2,7 @@ package com.gabrielfv.ibmtest.domain.form
 
 import javax.inject.Inject
 
-class EmailValidationUseCase @Inject constructor() {
+class ValidateEmailUseCase @Inject constructor() {
 
     operator fun invoke(email: String): Boolean = emailRegex.matches(email)
 

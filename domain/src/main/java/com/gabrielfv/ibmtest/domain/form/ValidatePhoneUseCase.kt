@@ -2,7 +2,7 @@ package com.gabrielfv.ibmtest.domain.form
 
 import javax.inject.Inject
 
-class PhoneValidationUseCase @Inject constructor() {
+class ValidatePhoneUseCase @Inject constructor() {
 
     operator fun invoke(number: String): Boolean {
         if (number.length != 11) return false
