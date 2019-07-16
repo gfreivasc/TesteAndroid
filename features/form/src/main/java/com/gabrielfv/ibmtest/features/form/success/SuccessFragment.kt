@@ -10,7 +10,6 @@ import com.gabrielfv.ibmtest.libraries.core.ViewPagerStackController
 import kotlinx.android.synthetic.main.fragment_success.*
 
 class SuccessFragment(
-    private val position: Int,
     private val stackController: ViewPagerStackController
 ) : Fragment() {
 
@@ -24,7 +23,7 @@ class SuccessFragment(
         super.onViewCreated(view, savedInstanceState)
 
         newMessageLink.setOnClickListener {
-            stackController.popFragment(position)
+            stackController.popFragment()
         }
     }
 }

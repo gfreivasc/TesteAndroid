@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 
 interface ViewPagerStackController {
 
-    fun pushFragment(position: Int, fragment: () -> Fragment)
+    fun pushFragment(fragment: () -> Fragment)
 
-    fun popFragment(position: Int)
+    fun popFragment()
 }

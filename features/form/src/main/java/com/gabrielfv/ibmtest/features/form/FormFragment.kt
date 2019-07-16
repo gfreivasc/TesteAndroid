@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_form.*
 import javax.inject.Inject
 
 class FormFragment(
-    private val position: Int,
     private val stackController: ViewPagerStackController
 ) : Fragment(), FormContract.View {
     @Inject
@@ -78,7 +77,7 @@ class FormFragment(
 
     override fun formValidation(valid: Boolean) {
         if (valid) {
-            stackController.pushFragment(position) { SuccessFragment(position, stackController) }
+            stackController.pushFragment { SuccessFragment(stackController) }
         } else {
 
         }

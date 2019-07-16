@@ -9,10 +9,10 @@ import com.gabrielfv.ibmtest.libraries.core.ViewPagerStackController
 class ViewPagerController(
     supportFragmentManager: FragmentManager,
     parentLifecycle: Lifecycle
-) : ViewPagerStackController{
+) {
     private val positionStacks = mutableListOf(
-        initStack { FormFragment(INVESTMENTS_POSITION, this) },
-        initStack { FormFragment(CONTACT_POSITION, this) }
+        initStack { FormFragment(StackController(INVESTMENTS_POSITION)) },
+        initStack { FormFragment(StackController(CONTACT_POSITION)) }
     )
 
     val adapter = PagesAdapter(
@@ -21,22 +21,24 @@ class ViewPagerController(
         getCurrentStackTops()
     )
 
-    override fun pushFragment(position: Int, fragment: () -> Fragment) {
-        positionStacks[position].add(fragment)
-        adapter.updatePages(getCurrentStackTops(), position)
-    }
-
-    override fun popFragment(position: Int) {
-        positionStacks[position].let { it.removeAt(it.lastIndex) }
-        adapter.updatePages(getCurrentStackTops(), position)
+    companion object {
+        const val INVESTMENTS_POSITION = 0
+        const val CONTACT_POSITION = 1
     }
 
     private fun getCurrentStackTops() = positionStacks.map { it.last() }
 
     private fun initStack(first: () -> Fragment) = mutableListOf(first)
 
-    companion object {
-        const val INVESTMENTS_POSITION = 0
-        const val CONTACT_POSITION = 1
+    inner class StackController(private val position: Int) : ViewPagerStackController {
+        override fun pushFragment(fragment: () -> Fragment) {
+            positionStacks[position].add(fragment)
+            adapter.updatePages(getCurrentStackTops(), position)
+        }
+
+        override fun popFragment() {
+            positionStacks[position].let { it.removeAt(it.lastIndex) }
+            adapter.updatePages(getCurrentStackTops(), position)
+        }
     }
 }
