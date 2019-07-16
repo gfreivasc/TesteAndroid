@@ -13,6 +13,10 @@ project.ext {
         ],
 
         dagger: '2.23.2',
+        rx: [
+            java    : '2.2.10',
+            android : '2.1.1'
+        ],
 
         junit5: [
             base     : '5.5.0',
@@ -47,6 +51,11 @@ project.ext {
         daggerKapt: [
             base    : "com.google.dagger:dagger-compiler:$versions.dagger",
             android : "com.google.dagger:dagger-android-processor:$versions.dagger"
+        ],
+
+        rx: [
+            java    : "io.reactivex.rxjava2:rxjava:$versions.rx.java",
+            android : "io.reactivex.rxjava2:rxandroid:$versions.rx.android"
         ],
 
         junit5: [

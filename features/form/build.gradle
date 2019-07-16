@@ -15,6 +15,7 @@ dependencies {
     implementation packages.androidx.coreKtx
     implementation packages.androidx.constraint
     implementation packages.androidx.material
+    implementation packages.rx.values()
 
     implementation packages.dagger.values()
     kapt packages.daggerKapt.values()

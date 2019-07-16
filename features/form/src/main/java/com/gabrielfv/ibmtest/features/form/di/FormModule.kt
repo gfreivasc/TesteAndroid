@@ -1,11 +1,14 @@
 package com.gabrielfv.ibmtest.features.form.di
 
+import com.gabrielfv.ibmtest.domain.form.FetchCellsUseCase
 import com.gabrielfv.ibmtest.domain.form.ValidateEmailUseCase
 import com.gabrielfv.ibmtest.domain.form.ValidateFormUseCase
 import com.gabrielfv.ibmtest.domain.form.ValidatePhoneUseCase
+import com.gabrielfv.ibmtest.domain.form.external.CellsProvider
 import com.gabrielfv.ibmtest.features.form.FormContract
 import com.gabrielfv.ibmtest.features.form.FormFragment
 import com.gabrielfv.ibmtest.features.form.FormPresenter
+import com.gabrielfv.ibmtest.features.form.data.CellsApi
 import com.gabrielfv.ibmtest.libraries.core.di.FeatureScope
 import dagger.Module
 import dagger.Provides
@@ -26,13 +29,18 @@ abstract class FormModule {
 
         @FeatureScope
         @Provides
+        fun providesCellsApi(): CellsProvider = CellsApi()
+
+        @FeatureScope
+        @Provides
         fun providesPresenter(
             view: FormContract.View,
+            fetchCellsUseCase: FetchCellsUseCase,
             validateEmailUseCase: ValidateEmailUseCase,
             validatePhoneUseCase: ValidatePhoneUseCase,
             validateFormUseCase: ValidateFormUseCase
         ): FormContract.Presenter = FormPresenter(
-            view, validateEmailUseCase, validatePhoneUseCase, validateFormUseCase
+            view, fetchCellsUseCase, validateEmailUseCase, validatePhoneUseCase, validateFormUseCase
         )
     }
 }
