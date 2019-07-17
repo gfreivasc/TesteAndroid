@@ -7,6 +7,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -27,10 +29,14 @@ class FormCellsAdapter(
     private var phoneValidationListener: Validator.Listener? = null
 
     private val cellFields = cells.map { cell ->
-        val field = when (cell.type) {
-            Cell.InputType.TEXT -> TextField("", cell.typefield ?: Cell.DataType.TEXT)
-            Cell.InputType.CHECKBOX -> SelectorField(false)
-            else -> null
+        val field = if (cell.hidden) {
+            null
+        } else {
+            when (cell.type) {
+                Cell.InputType.FIELD -> TextField("", cell.typefield ?: Cell.DataType.TEXT)
+                Cell.InputType.CHECKBOX -> SelectorField(false)
+                else -> null
+            }
         }
         CellField(cell, field)
     }
@@ -109,8 +115,13 @@ class FormCellsAdapter(
         fun bind(cellField: CellField) {
             if (cellField.cell.hidden) {
                 itemView.visibility = View.GONE
+                itemView.layoutParams = ConstraintLayout.LayoutParams(0, 0)
             } else {
                 itemView.visibility = View.VISIBLE
+                itemView.layoutParams = ConstraintLayout.LayoutParams(
+                    MATCH_PARENT,
+                    WRAP_CONTENT
+                )
                 onBind(cellField)
             }
         }
