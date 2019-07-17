@@ -16,6 +16,7 @@ import com.gabrielfv.ibmtest.domain.form.model.*
 import com.gabrielfv.ibmtest.features.form.text.MaskWatcher
 import com.gabrielfv.ibmtest.libraries.design.toDp
 import com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
+import kotlinx.android.synthetic.main.list_item_selector_cell.view.*
 import kotlinx.android.synthetic.main.list_item_submit_cell.view.*
 import kotlinx.android.synthetic.main.list_item_text_input_cell.view.*
 import kotlinx.android.synthetic.main.list_item_text_label_cell.view.*
@@ -67,6 +68,12 @@ class FormCellsAdapter(
                     .inflate(R.layout.list_item_submit_cell, parent, false)
 
                 return SubmitCellViewHolder(itemView)
+            }
+            Cell.InputType.CHECKBOX.serialized -> {
+                val itemView = inflater
+                    .inflate(R.layout.list_item_selector_cell, parent, false)
+
+                return SelectorCellViewHolder(itemView)
             }
             else -> {
                 val itemView = inflater
@@ -234,6 +241,19 @@ class FormCellsAdapter(
                 applyTopMargin(cellField.cell)
                 setOnClickListener {
                     submit(Form(cellFields.mapNotNull { it.input }))
+                }
+            }
+        }
+    }
+
+    inner class SelectorCellViewHolder(itemView: View) : CellViewHolder(itemView) {
+
+        override fun onBind(cellField: CellField) {
+            itemView.selector.apply {
+                text = cellField.cell.message
+                isChecked = (cellField.input as? SelectorField)?.selected ?: false
+                setOnClickListener {
+                    cellField.input = SelectorField(isChecked)
                 }
             }
         }
