@@ -13,7 +13,7 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.gabrielfv.ibmtest.domain.form.model.*
-import com.gabrielfv.ibmtest.features.form.text.MaskWatcher
+import com.gabrielfv.ibmtest.features.form.text.PhoneWatcher
 import com.gabrielfv.ibmtest.libraries.design.toDp
 import com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
 import kotlinx.android.synthetic.main.list_item_selector_cell.view.*
@@ -43,7 +43,6 @@ class FormCellsAdapter(
     }
 
     companion object {
-        const val PHONE_MASK = "(##) #####-####"
         const val PHONE_MAX_LENGTH = 15
     }
 
@@ -154,6 +153,9 @@ class FormCellsAdapter(
                 }
                 wrapperTextInput.applyTopMargin(cellField.cell)
                 considerListenValidations(wrapperTextInput, cellField.cell.typefield)
+                wrapperTextInput.setEndIconOnClickListener {
+                    wrapperTextInput.editText?.text?.clear()
+                }
             }
 
             type = cellField.cell.typefield
@@ -184,7 +186,7 @@ class FormCellsAdapter(
                     if (!hasFocus) validator.validateEmail(editText.text.toString())
                 }
             } else if (type == Cell.DataType.PHONE) {
-                editText.addTextChangedListener(MaskWatcher(PHONE_MASK))
+                editText.addTextChangedListener(PhoneWatcher())
                 editText.filters = arrayOf(InputFilter.LengthFilter(PHONE_MAX_LENGTH))
                 editText.setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus) validator.validatePhone(editText.text.toString())
@@ -192,7 +194,7 @@ class FormCellsAdapter(
             } else {
                 editText.setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus && editText.text.isNotEmpty()) wrapper.setSuccess()
-                    else wrapper.setError()
+                    else if (editText.text.isEmpty()) wrapper.setError()
                 }
             }
         }

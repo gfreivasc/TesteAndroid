@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gabrielfv.ibmtest.domain.form.model.Cell
 import com.gabrielfv.ibmtest.features.form.success.SuccessFragment
-import com.gabrielfv.ibmtest.features.form.text.MaskWatcher
 import com.gabrielfv.ibmtest.libraries.core.ViewPagerStackController
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_form.*
@@ -21,7 +20,7 @@ class FormFragment(
 ) : Fragment(), FormContract.View {
     @Inject
     lateinit var presenter: FormContract.Presenter
-    lateinit var cellsAdapter: FormCellsAdapter
+    private lateinit var cellsAdapter: FormCellsAdapter
 
     private val validator = object : FormCellsAdapter.Validator {
         override fun validatePhone(phoneNumber: String) {

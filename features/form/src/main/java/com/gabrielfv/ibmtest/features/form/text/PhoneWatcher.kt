@@ -1,16 +1,18 @@
 package com.gabrielfv.ibmtest.features.form.text
 
-/*
-MIT License
-Copyright (c) 2016 Diego Yasuhiko Kurisaki
-*/
-
 import android.text.Editable
 import android.text.TextWatcher
 
-class MaskWatcher(private val mask: String) : TextWatcher {
+class PhoneWatcher : TextWatcher {
     private var isRunning = false
     private var isDeleting = false
+
+    private var mask: String = PHONE_MASK
+
+    companion object {
+        const val PHONE_MASK = "(##) ####-####"
+        const val PHONE_MASK_9 = "(##) #####-####"
+    }
 
     override fun beforeTextChanged(charSequence: CharSequence, start: Int, count: Int, after: Int) {
         isDeleting = count > after
@@ -25,6 +27,13 @@ class MaskWatcher(private val mask: String) : TextWatcher {
         isRunning = true
 
         val editableLength = editable.length
+
+        mask = if (editableLength == PHONE_MASK.length) {
+            PHONE_MASK_9
+        } else {
+            PHONE_MASK
+        }
+
         if (editableLength < mask.length) {
             if (mask[editableLength] != '#') {
                 editable.append(mask[editableLength])
