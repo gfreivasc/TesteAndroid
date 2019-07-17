@@ -2,6 +2,8 @@ package com.gabrielfv.ibmtest.libraries.design.widgets
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MotionEvent.ACTION_DOWN
+import android.view.MotionEvent.ACTION_UP
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
@@ -14,38 +16,30 @@ class Button
 ): Button(context, attrs) {
 
     init {
-        setOnClickListener {
-            initAnimation()
+        setOnTouchListener { _, motionEvent ->
+            when (motionEvent.action) {
+                ACTION_DOWN -> inAnimation()
+                ACTION_UP -> outAnimation()
+            }
+            true
         }
     }
 
-    private fun initAnimation() {
-        val inAnim = AnimationUtils.loadAnimation(context,
-            R.anim.opacity_bounce_in
-        )
+    private fun outAnimation() {
         val outAnim = AnimationUtils.loadAnimation(context,
             R.anim.opacity_bounce_out
         )
+        outAnim.fillAfter = true
 
-        inAnim.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) { }
-            override fun onAnimationRepeat(p0: Animation?) { }
+        startAnimation(outAnim)
+    }
 
-            override fun onAnimationEnd(p0: Animation?) {
-                startAnimation(outAnim)
-            }
-        })
+    private fun inAnimation() {
+        val inAnim = AnimationUtils.loadAnimation(context,
+            R.anim.opacity_bounce_in
+        )
+        inAnim.fillAfter = true
 
-        outAnim.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) { }
-            override fun onAnimationRepeat(p0: Animation?) { }
-
-            override fun onAnimationEnd(p0: Animation?) {
-                isClickable = true
-            }
-        })
-
-        isClickable = false
         startAnimation(inAnim)
     }
 }
