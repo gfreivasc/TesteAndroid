@@ -25,7 +25,7 @@ class FormPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { view.inflateCells(it) },
-                { view.informCellsError() }
+                { view.informCellsError(it) }
             )
             .let { disposables.add(it) }
     }

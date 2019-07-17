@@ -16,6 +16,7 @@ dependencies {
     implementation packages.androidx.constraint
     implementation packages.androidx.material
     implementation packages.rx.values()
+    implementation packages.retrofit.base
 
     implementation packages.dagger.values()
     kapt packages.daggerKapt.values()

@@ -2,6 +2,7 @@ package com.gabrielfv.ibmtest.features.form
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -60,8 +61,8 @@ class FormFragment(
         formCells.adapter = cellsAdapter
     }
 
-    override fun informCellsError() {
-        // Undefined Behavior
+    override fun informCellsError(error: Throwable) {
+        Log.e("ERROR", "E", error)
     }
 
     override fun emailValidation(valid: Boolean) {

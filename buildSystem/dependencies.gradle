@@ -18,6 +18,8 @@ project.ext {
             android : '2.1.1'
         ],
 
+        retrofit: '2.6.0',
+
         junit5: [
             base     : '5.5.0',
             launcher : '1.5.0'
@@ -56,6 +58,12 @@ project.ext {
         rx: [
             java    : "io.reactivex.rxjava2:rxjava:$versions.rx.java",
             android : "io.reactivex.rxjava2:rxandroid:$versions.rx.android"
+        ],
+
+        retrofit: [
+            base          : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            rxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+            gsonConverter : "com.squareup.retrofit2:converter-gson:$versions.retrofit"
         ],
 
         junit5: [

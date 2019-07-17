@@ -9,10 +9,12 @@ import com.gabrielfv.ibmtest.features.form.FormContract
 import com.gabrielfv.ibmtest.features.form.FormFragment
 import com.gabrielfv.ibmtest.features.form.FormPresenter
 import com.gabrielfv.ibmtest.features.form.data.CellsApi
+import com.gabrielfv.ibmtest.features.form.data.CellsRepository
 import com.gabrielfv.ibmtest.libraries.core.di.FeatureScope
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
+import retrofit2.Retrofit
 
 @Module
 abstract class FormModule {
@@ -29,7 +31,11 @@ abstract class FormModule {
 
         @FeatureScope
         @Provides
-        fun providesCellsApi(): CellsProvider = CellsApi()
+        fun providesCellsApi(retrofit: Retrofit): CellsApi = retrofit.create(CellsApi::class.java)
+
+        @FeatureScope
+        @Provides
+        fun providesCellProvider(cellsApi: CellsApi): CellsProvider = CellsRepository(cellsApi)
 
         @FeatureScope
         @Provides

@@ -8,7 +8,7 @@ interface FormContract {
 
     interface View {
         fun inflateCells(cells: List<Cell>)
-        fun informCellsError()
+        fun informCellsError(error: Throwable)
         fun emailValidation(valid: Boolean)
         fun phoneValidation(valid: Boolean)
         fun formValidation(valid: Boolean)
