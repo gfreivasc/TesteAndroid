@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorAccent">@color/pulseRed</color>
+    <color name="colorAccent">#FF7722</color>
 
     <color name="pulseRed">#DA0101</color>
     <color name="limeGreen">#7FFF00</color>

@@ -8,6 +8,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation packages.kotlin
     implementation packages.rx.java
+    implementation packages.gson
 
     implementation packages.dagger.base
     kapt packages.daggerKapt.base

@@ -1,5 +1,7 @@
 package com.gabrielfv.ibmtest.domain.form.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Cell(
     val id: Int,
     val type: InputType,
@@ -11,16 +13,16 @@ data class Cell(
     val required: Boolean
 ) {
     enum class InputType(val serialized: Int) {
-        FIELD(1),
-        TEXT(2),
-        IMAGE(3),
-        CHECKBOX(4),
-        SEND(5)
+        @SerializedName("1") FIELD(1),
+        @SerializedName("2") TEXT(2),
+        @SerializedName("3") IMAGE(3),
+        @SerializedName("4") CHECKBOX(4),
+        @SerializedName("5") SEND(5)
     }
 
     enum class DataType(val serialized: Int, alt: String? = null) {
-        TEXT(1),
-        PHONE(2, "telnumber"),
-        EMAIL(3)
+        @SerializedName("1") TEXT(1),
+        @SerializedName("telnumber") PHONE(2, "telnumber"),
+        @SerializedName("3") EMAIL(3)
     }
 }

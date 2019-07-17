@@ -12,4 +12,5 @@ class CellsRepository(
 
     override fun fetchCells(): Single<List<Cell>> = cellsApi.fetchCells()
         .subscribeOn(Schedulers.io())
+        .map { it.cells }
 }
