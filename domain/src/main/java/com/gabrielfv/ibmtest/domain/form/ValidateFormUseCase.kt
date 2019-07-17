@@ -1,6 +1,6 @@
 package com.gabrielfv.ibmtest.domain.form
 
-import com.gabrielfv.ibmtest.domain.form.model.Form
+import com.gabrielfv.ibmtest.domain.form.model.*
 import javax.inject.Inject
 
 class ValidateFormUseCase @Inject constructor(
@@ -9,8 +9,14 @@ class ValidateFormUseCase @Inject constructor(
 ) {
 
     operator fun invoke(form: Form): Boolean {
-        return form.name.isNotEmpty()
-                && validateEmail(form.email)
-                && validatePhone(form.phoneNumber)
+        return form.fields.all { field ->
+            if (field is TextField) {
+                when (field.type) {
+                    Cell.DataType.TEXT -> field.text.isNotEmpty()
+                    Cell.DataType.EMAIL -> validateEmail(field.text)
+                    Cell.DataType.PHONE -> validatePhone(field.text)
+                }
+            } else true
+        }
     }
 }

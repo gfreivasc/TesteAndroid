@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
+        android:id="@+id/wrapperTextInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/name_field_hint"
+        app:hintTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:errorTextAppearance="@style/AppTheme.TextRegular.Light"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_text_clear"
+        app:endIconContentDescription="@string/acs_clear_field"
+        app:endIconTintMode="screen"
+        app:endIconTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/AppTheme.InputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            tools:text="José da Silva Oliveira" />
+
+    </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

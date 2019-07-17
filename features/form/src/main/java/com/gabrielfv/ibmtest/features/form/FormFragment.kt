@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.gabrielfv.ibmtest.domain.form.model.Cell
 import com.gabrielfv.ibmtest.features.form.success.SuccessFragment
 import com.gabrielfv.ibmtest.features.form.text.MaskWatcher
@@ -19,8 +20,17 @@ class FormFragment(
 ) : Fragment(), FormContract.View {
     @Inject
     lateinit var presenter: FormContract.Presenter
+    lateinit var cellsAdapter: FormCellsAdapter
 
-    private val phoneWatcher = MaskWatcher(PHONE_MASK)
+    private val validator = object : FormCellsAdapter.Validator {
+        override fun validatePhone(phoneNumber: String) {
+            presenter.validatePhone(phoneNumber)
+        }
+
+        override fun validateEmail(email: String) {
+            presenter.validateEmail(email)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,19 +50,14 @@ class FormFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.start()
-        initTextFields()
-        submit.setOnClickListener {
-            presenter.validateForm(
-                nameInput.text.toString(),
-                emailInput.text.toString(),
-                phoneInput.text.toString(),
-                true
-            )
-        }
     }
 
     override fun inflateCells(cells: List<Cell>) {
-        // TODO: Inflate cells on RecyclerView
+        cellsAdapter = FormCellsAdapter(cells, validator) { form ->
+            presenter.validateForm(form)
+        }
+        formCells.layoutManager = LinearLayoutManager(requireContext())
+        formCells.adapter = cellsAdapter
     }
 
     override fun informCellsError() {
@@ -60,51 +65,18 @@ class FormFragment(
     }
 
     override fun emailValidation(valid: Boolean) {
-        if (valid) {
-            wrapperEmailInput.setSuccess()
-        } else {
-            wrapperEmailInput.setError()
-        }
+        cellsAdapter.emailValidation(valid)
     }
 
     override fun phoneValidation(valid: Boolean) {
-        if (valid) {
-            wrapperPhoneInput.setSuccess()
-        } else {
-            wrapperPhoneInput.setError()
-        }
+        cellsAdapter.phoneValidation(valid)
     }
 
     override fun formValidation(valid: Boolean) {
         if (valid) {
             stackController.pushFragment { SuccessFragment(stackController) }
         } else {
-
+            // Undefined Behavior
         }
-    }
-
-    private fun initTextFields() {
-        setOf(wrapperNameInput, wrapperEmailInput, wrapperPhoneInput).forEach { inputLayout ->
-            inputLayout.setEndIconOnClickListener {
-                inputLayout.editText?.text?.clear()
-            }
-        }
-
-        nameInput.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus && nameInput.text?.isNotEmpty() == true) wrapperNameInput.setSuccess()
-        }
-
-        emailInput.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) presenter.validateEmail(emailInput.text.toString())
-        }
-
-        phoneInput.addTextChangedListener(phoneWatcher)
-        phoneInput.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) presenter.validatePhone(phoneInput.text.toString())
-        }
-    }
-
-    companion object {
-        const val PHONE_MASK = "(##) #####-####"
     }
 }

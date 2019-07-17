@@ -4,7 +4,9 @@ import com.gabrielfv.ibmtest.domain.form.FetchCellsUseCase
 import com.gabrielfv.ibmtest.domain.form.ValidateEmailUseCase
 import com.gabrielfv.ibmtest.domain.form.ValidateFormUseCase
 import com.gabrielfv.ibmtest.domain.form.ValidatePhoneUseCase
+import com.gabrielfv.ibmtest.domain.form.model.Cell
 import com.gabrielfv.ibmtest.domain.form.model.Form
+import com.gabrielfv.ibmtest.domain.form.model.TextField
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -39,14 +41,16 @@ class FormPresenter(
         view.phoneValidation(valid)
     }
 
-    override fun validateForm(name: String, email: String, phone: String, register: Boolean) {
-        val form = Form(
-            name,
-            email,
-            phone.filter { it.isDigit() },
-            register
-        )
-        val valid = validateFormUseCase(form)
+    override fun validateForm(form: Form) {
+        val cleanedForm = form.fields.map { field ->
+            if (field is TextField && field.type == Cell.DataType.PHONE) {
+                TextField(field.text.filter { it.isDigit() }, field.type)
+            } else {
+                field
+            }
+        }.let { cleanedFields -> Form(cleanedFields) }
+
+        val valid = validateFormUseCase(cleanedForm)
         view.formValidation(valid)
     }
 
