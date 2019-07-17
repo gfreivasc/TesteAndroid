@@ -5,7 +5,7 @@ import javax.inject.Inject
 class ValidatePhoneUseCase @Inject constructor() {
 
     operator fun invoke(number: String): Boolean {
-        if (number.length != 11) return false
+        if (number.length != 11 || number.length != 10) return false
         if (validDDDRegex.containsMatchIn(number.take(2))) return true
         return false
     }

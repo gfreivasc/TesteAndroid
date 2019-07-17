@@ -28,6 +28,8 @@ class FormPresenter(
                 { view.informCellsError(it) }
             )
             .let { disposables.add(it) }
+
+        view.informCellsLoading()
     }
 
     override fun validateEmail(email: String) {

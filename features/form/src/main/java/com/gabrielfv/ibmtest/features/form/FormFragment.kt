@@ -53,7 +53,12 @@ class FormFragment(
         presenter.start()
     }
 
+    override fun informCellsLoading() {
+        loadingIndicator.visibility = View.VISIBLE
+    }
+
     override fun inflateCells(cells: List<Cell>) {
+        loadingIndicator.visibility = View.GONE
         cellsAdapter = FormCellsAdapter(cells, validator) { form ->
             presenter.validateForm(form)
         }

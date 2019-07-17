@@ -28,95 +28,14 @@
         tools:itemCount="3"
         tools:listitem="@layout/list_item_text_input_cell" />
 
-    <com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
-        android:id="@+id/wrapperNameInput"
-        android:layout_width="0dp"
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/name_field_hint"
         android:visibility="gone"
-        app:hintTextAppearance="@style/AppTheme.TextRegular.Light"
-        app:errorTextAppearance="@style/AppTheme.TextRegular.Light"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_text_clear"
-        app:endIconContentDescription="@string/acs_clear_field"
-        app:endIconTintMode="screen"
-        app:endIconTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/AppTheme.InputText"
-            android:inputType="textPersonName"
-            tools:text="José da Silva Oliveira" />
-
-    </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
-
-    <com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
-        android:id="@+id/wrapperEmailInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/email_field_hint"
-        android:visibility="gone"
-        app:hintTextAppearance="@style/AppTheme.TextRegular.Light"
-        app:errorTextAppearance="@style/AppTheme.TextRegular.Light"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_text_clear"
-        app:endIconContentDescription="@string/acs_clear_field"
-        app:endIconTintMode="screen"
-        app:endIconTint="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wrapperNameInput">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailInput"
-            style="@style/AppTheme.InputText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            tools:text="josedasilva@gmail.com" />
-
-    </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
-
-    <com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
-        android:id="@+id/wrapperPhoneInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/phone_field_hint"
-        android:visibility="gone"
-        app:hintTextAppearance="@style/AppTheme.TextRegular.Light"
-        app:errorTextAppearance="@style/AppTheme.TextRegular.Light"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_text_clear"
-        app:endIconContentDescription="@string/acs_clear_field"
-        app:endIconTintMode="screen"
-        app:endIconTint="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wrapperEmailInput">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phoneInput"
-            style="@style/AppTheme.InputText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:maxLength="15"
-            tools:text="(11) 99111-1111" />
-
-    </com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@id/header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
