@@ -7,8 +7,6 @@ class PhoneWatcher : TextWatcher {
     private var isRunning = false
     private var isDeleting = false
 
-    private var mask: String = PHONE_MASK
-
     companion object {
         const val PHONE_MASK = "(##) ####-####"
         const val PHONE_MASK_9 = "(##) #####-####"
@@ -28,17 +26,11 @@ class PhoneWatcher : TextWatcher {
 
         val editableLength = editable.length
 
-        mask = if (editableLength == PHONE_MASK.length) {
-            PHONE_MASK_9
-        } else {
-            PHONE_MASK
-        }
-
-        if (editableLength < mask.length) {
-            if (mask[editableLength] != '#') {
-                editable.append(mask[editableLength])
-            } else if (mask[editableLength - 1] != '#') {
-                editable.insert(editableLength - 1, mask, editableLength - 1, editableLength)
+        if (editableLength < PHONE_MASK_9.length) {
+            if (PHONE_MASK_9[editableLength] != '#') {
+                editable.append(PHONE_MASK_9[editableLength])
+            } else if (PHONE_MASK_9[editableLength - 1] != '#') {
+                editable.insert(editableLength - 1, PHONE_MASK_9, editableLength - 1, editableLength)
             }
         }
 

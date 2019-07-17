@@ -155,6 +155,7 @@ class FormCellsAdapter(
                 considerListenValidations(wrapperTextInput, cellField.cell.typefield)
                 wrapperTextInput.setEndIconOnClickListener {
                     wrapperTextInput.editText?.text?.clear()
+                    wrapperTextInput.setError()
                 }
             }
 
@@ -193,8 +194,10 @@ class FormCellsAdapter(
                 }
             } else {
                 editText.setOnFocusChangeListener { _, hasFocus ->
-                    if (!hasFocus && editText.text.isNotEmpty()) wrapper.setSuccess()
-                    else if (editText.text.isEmpty()) wrapper.setError()
+                    if (!hasFocus) {
+                        if (editText.text.isNotEmpty()) wrapper.setSuccess()
+                        else wrapper.setError()
+                    }
                 }
             }
         }
