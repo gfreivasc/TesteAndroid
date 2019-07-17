@@ -21,7 +21,7 @@ class Button
                 ACTION_DOWN -> inAnimation()
                 ACTION_UP -> outAnimation()
             }
-            true
+            false
         }
     }
 

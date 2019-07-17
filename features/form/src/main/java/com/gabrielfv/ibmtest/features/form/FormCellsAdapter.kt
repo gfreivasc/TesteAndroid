@@ -145,12 +145,14 @@ class FormCellsAdapter(
 
     inner class TextInputCellViewHolder(itemView: View) : CellViewHolder(itemView) {
         var type: Cell.DataType? = null
+        private var watcher: FieldWatcher? = null
 
         override fun onBind(cellField: CellField) {
             itemView.apply {
                 wrapperTextInput.hint = cellField.cell.message
                 wrapperTextInput.editText?.let { editText ->
                     editText.removeTextChangedListener(phoneNumberWatcher)
+                    editText.removeTextChangedListener(watcher)
                     applyEditTextRules(wrapperTextInput, editText, cellField.cell.typefield)
                     supplyInputIfExists(editText, cellField)
                 }
@@ -173,7 +175,8 @@ class FormCellsAdapter(
                 else -> InputType.TYPE_CLASS_TEXT
             }
 
-            editText.addTextChangedListener(FieldWatcher(adapterPosition, type ?: Cell.DataType.TEXT))
+            watcher = FieldWatcher(adapterPosition, type ?: Cell.DataType.TEXT)
+            editText.addTextChangedListener(watcher)
 
             if (type == Cell.DataType.EMAIL) {
                 editText.setOnFocusChangeListener { _, hasFocus ->
