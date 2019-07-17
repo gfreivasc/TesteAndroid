@@ -22,12 +22,14 @@ import kotlinx.android.synthetic.main.list_item_text_input_cell.view.*
 import kotlinx.android.synthetic.main.list_item_text_label_cell.view.*
 
 class FormCellsAdapter(
-    private val cells: List<Cell>,
+    cells: List<Cell>,
     private val validator: Validator,
     private val submit: (Form) -> Unit
 ) : RecyclerView.Adapter<FormCellsAdapter.CellViewHolder>() {
     private var emailValidationListener: Validator.Listener? = null
     private var phoneValidationListener: Validator.Listener? = null
+
+    private val phoneNumberWatcher = PhoneWatcher()
 
     private val cellFields = cells.map { cell ->
         val field = if (cell.hidden) {
@@ -83,7 +85,7 @@ class FormCellsAdapter(
         }
     }
 
-    override fun getItemViewType(position: Int): Int = cells[position].type.serialized
+    override fun getItemViewType(position: Int): Int = cellFields[position].cell.type.serialized
 
     override fun getItemCount(): Int = cellFields.size
 
@@ -112,7 +114,7 @@ class FormCellsAdapter(
     }
 
     data class CellField(
-        val cell: Cell,
+        var cell: Cell,
         var input: FormField?
     )
 
@@ -148,6 +150,7 @@ class FormCellsAdapter(
             itemView.apply {
                 wrapperTextInput.hint = cellField.cell.message
                 wrapperTextInput.editText?.let { editText ->
+                    editText.removeTextChangedListener(phoneNumberWatcher)
                     applyEditTextRules(wrapperTextInput, editText, cellField.cell.typefield)
                     supplyInputIfExists(editText, cellField)
                 }
@@ -170,17 +173,7 @@ class FormCellsAdapter(
                 else -> InputType.TYPE_CLASS_TEXT
             }
 
-            editText.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(text: Editable?) {
-                    cellFields[adapterPosition].input = TextField(
-                        text.toString(),
-                        type ?: Cell.DataType.TEXT
-                    )
-                }
-
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
-            })
+            editText.addTextChangedListener(FieldWatcher(adapterPosition, type ?: Cell.DataType.TEXT))
 
             if (type == Cell.DataType.EMAIL) {
                 editText.setOnFocusChangeListener { _, hasFocus ->
@@ -226,6 +219,21 @@ class FormCellsAdapter(
                 }
             }
         }
+
+        private inner class FieldWatcher(
+            private val adapterPosition: Int,
+            private val type: Cell.DataType
+        ) : TextWatcher {
+            override fun afterTextChanged(text: Editable?) {
+                cellFields[adapterPosition].input = TextField(
+                    text.toString(),
+                    type
+                )
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+        }
     }
 
     class TextLabelCellViewHolder(itemView: View) : CellViewHolder(itemView) {
@@ -259,8 +267,20 @@ class FormCellsAdapter(
                 isChecked = (cellField.input as? SelectorField)?.selected ?: false
                 setOnClickListener {
                     cellField.input = SelectorField(isChecked)
+                    considerShow(isChecked, cellField.cell.show)
                 }
             }
+        }
+
+        private fun considerShow(active: Boolean, item: Int?) {
+            if (item == null) return
+            cellFields.find { it.cell.id == item }
+                ?.let { cellField ->
+                    if (active != !cellField.cell.hidden) {
+                        cellField.cell = cellField.cell.copy(hidden = !active)
+                        notifyDataSetChanged()
+                    }
+                }
         }
     }
 
