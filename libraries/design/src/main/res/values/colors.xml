@@ -3,11 +3,13 @@
     <color name="colorAccent">@color/pulseRed</color>
 
     <color name="pulseRed">#DA0101</color>
-    <color name="limeGreen">#7FFF00</color>
+    <color name="limeGreen">#65BE30</color>
 
     <color name="offWhite">#FAFAFA</color>
     <color name="lightGrey">#D8D8D8</color>
     <color name="grey">#ACACAC</color>
+    <color name="mediumGrey">#7E7E7E</color>
     <color name="darkGrey">#333333</color>
+    <color name="darkerGrey">#151515</color>
     <color name="darkShade">#1A322A2A</color>
 </resources>

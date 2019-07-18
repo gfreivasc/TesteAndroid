@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import com.gabrielfv.ibmtest.features.form.FormFragment
+import com.gabrielfv.ibmtest.features.funds.FundsFragment
 import com.gabrielfv.ibmtest.libraries.core.ViewPagerStackController
 
 class ViewPagerController(
@@ -11,7 +12,7 @@ class ViewPagerController(
     parentLifecycle: Lifecycle
 ) {
     private val positionStacks = mutableListOf(
-        initStack { FormFragment(StackController(INVESTMENTS_POSITION)) },
+        initStack { FundsFragment() },
         initStack { FormFragment(StackController(CONTACT_POSITION)) }
     )
 
@@ -22,7 +23,7 @@ class ViewPagerController(
     )
 
     companion object {
-        const val INVESTMENTS_POSITION = 0
+        const val FUND_POSITION = 0
         const val CONTACT_POSITION = 1
     }
 

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">funds</string>
+    <string name="fund_info_label">Fundo</string>
+    <string name="cdi_info_label">CDI</string>
+    <string name="monthly_info_label">No mês</string>
+    <string name="yearly_info_label">No ano</string>
+    <string name="tw_month_info_label">12 meses</string>
+</resources>

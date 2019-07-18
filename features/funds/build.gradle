@@ -1,37 +1,22 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-apply from: "$rootDir/buildSystem/android.gradle"
-
-android {
-    defaultConfig {
-        applicationId "com.gabrielfv.ibmtest"
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        debug {
-            applicationIdSuffix ".debug"
-        }
-    }
-}
+apply from: "$rootDir/buildSystem/androidlib.gradle"
 
 dependencies {
-    implementation project(':domain')
-    implementation project(':features:form')
-    implementation project(':features:funds')
-
     implementation project(':libraries:generic')
     implementation project(':libraries:design')
+    implementation project(':domain')
 
     implementation packages.kotlin
     implementation packages.androidx.appcompat
     implementation packages.androidx.coreKtx
-    implementation packages.androidx.viewpager2
     implementation packages.androidx.constraint
-    implementation packages.retrofit.values()
+    implementation packages.rx.values()
+    implementation packages.retrofit.base
+
 
     implementation packages.dagger.values()
     kapt packages.daggerKapt.values()

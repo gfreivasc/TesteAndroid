@@ -20,10 +20,10 @@
         android:id="@+id/bottomNavigationBar"
         android:layout_width="0dp"
         android:layout_height="58dp"
-        app:firstItem="Investimentos"
+        app:firstItem="@string/fund"
+        app:secondItem="@string/contact"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:secondItem="Contato" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

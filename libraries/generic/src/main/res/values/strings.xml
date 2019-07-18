@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">core</string>
     <string name="contact">Contato</string>
     <string name="submit">Enviar</string>
+    <string name="fund">Investimento</string>
 </resources>
