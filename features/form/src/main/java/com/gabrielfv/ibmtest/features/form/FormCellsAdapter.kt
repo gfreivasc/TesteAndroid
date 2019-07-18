@@ -102,6 +102,8 @@ class FormCellsAdapter(
                 Cell.DataType.PHONE -> phoneValidationListener = null
                 else -> { }
             }
+
+            holder.clearWatchers()
         }
     }
 
@@ -124,6 +126,8 @@ class FormCellsAdapter(
             if (cellField.cell.hidden) {
                 itemView.visibility = View.GONE
                 itemView.layoutParams = ConstraintLayout.LayoutParams(0, 0)
+                cellField.input = null
+                onHidden()
             } else {
                 itemView.visibility = View.VISIBLE
                 itemView.layoutParams = ConstraintLayout.LayoutParams(
@@ -135,6 +139,8 @@ class FormCellsAdapter(
         }
 
         protected abstract fun onBind(cellField: CellField)
+
+        protected abstract fun onHidden()
 
         protected fun View.applyTopMargin(cell: Cell) {
             val layoutParams = this.layoutParams as ConstraintLayout.LayoutParams
@@ -148,12 +154,17 @@ class FormCellsAdapter(
         private var watcher: FieldWatcher? = null
 
         override fun onBind(cellField: CellField) {
+            type = cellField.cell.typefield
+            if (cellField.input !is TextField) {
+                cellField.input = TextField("", type ?: Cell.DataType.TEXT)
+            }
+
             itemView.apply {
                 wrapperTextInput.hint = cellField.cell.message
                 wrapperTextInput.editText?.let { editText ->
                     editText.removeTextChangedListener(phoneNumberWatcher)
                     editText.removeTextChangedListener(watcher)
-                    applyEditTextRules(wrapperTextInput, editText, cellField.cell.typefield)
+                    applyEditTextRules(wrapperTextInput, editText, cellField.input as TextField)
                     supplyInputIfExists(editText, cellField)
                 }
                 wrapperTextInput.applyTopMargin(cellField.cell)
@@ -163,11 +174,21 @@ class FormCellsAdapter(
                     wrapperTextInput.setError()
                 }
             }
-
-            type = cellField.cell.typefield
         }
 
-        private fun applyEditTextRules(wrapper: TextInputLayout, editText: EditText, type: Cell.DataType?) {
+        override fun onHidden() {
+            clearWatchers()
+        }
+
+        fun clearWatchers() {
+            itemView.wrapperTextInput.editText?.let { editText ->
+                editText.removeTextChangedListener(phoneNumberWatcher)
+                editText.removeTextChangedListener(watcher)
+                watcher = null
+            }
+        }
+
+        private fun applyEditTextRules(wrapper: TextInputLayout, editText: EditText, field: TextField) {
             editText.inputType = when (type) {
                 Cell.DataType.TEXT -> InputType.TYPE_TEXT_VARIATION_PERSON_NAME
                 Cell.DataType.EMAIL -> InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
@@ -175,7 +196,9 @@ class FormCellsAdapter(
                 else -> InputType.TYPE_CLASS_TEXT
             }
 
-            watcher = FieldWatcher(adapterPosition, type ?: Cell.DataType.TEXT)
+            editText.setText(field.text)
+
+            watcher = FieldWatcher()
             editText.addTextChangedListener(watcher)
 
             if (type == Cell.DataType.EMAIL) {
@@ -223,14 +246,11 @@ class FormCellsAdapter(
             }
         }
 
-        private inner class FieldWatcher(
-            private val adapterPosition: Int,
-            private val type: Cell.DataType
-        ) : TextWatcher {
+        private inner class FieldWatcher : TextWatcher {
             override fun afterTextChanged(text: Editable?) {
                 cellFields[adapterPosition].input = TextField(
                     text.toString(),
-                    type
+                    type ?: Cell.DataType.TEXT
                 )
             }
 
@@ -247,6 +267,8 @@ class FormCellsAdapter(
                 label.applyTopMargin(cellField.cell)
             }
         }
+
+        override fun onHidden() { }
     }
 
     inner class SubmitCellViewHolder(itemView: View) : CellViewHolder(itemView) {
@@ -260,6 +282,8 @@ class FormCellsAdapter(
                 }
             }
         }
+
+        override fun onHidden() { }
     }
 
     inner class SelectorCellViewHolder(itemView: View) : CellViewHolder(itemView) {
@@ -274,6 +298,8 @@ class FormCellsAdapter(
                 }
             }
         }
+
+        override fun onHidden() { }
 
         private fun considerShow(active: Boolean, item: Int?) {
             if (item == null) return

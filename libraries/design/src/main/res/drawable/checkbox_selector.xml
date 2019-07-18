@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android"
     android:constantSize="true"
     android:visible="true">
-    <item android:drawable="@drawable/radio_selector_selected"
+    <item android:drawable="@drawable/checkbox_selected"
         android:state_checked="true" />
-    <item android:drawable="@drawable/radio_selector_unselected"
+    <item android:drawable="@drawable/checkbox_unselected"
         android:state_checked="false" />
-    <item android:drawable="@drawable/radio_selector_unselected" />
+    <item android:drawable="@drawable/checkbox_unselected" />
 </selector>
