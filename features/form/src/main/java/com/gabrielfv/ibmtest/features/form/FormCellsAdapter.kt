@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gabrielfv.ibmtest.domain.form.model.*
 import com.gabrielfv.ibmtest.features.form.text.PhoneWatcher
 import com.gabrielfv.ibmtest.libraries.design.toDp
+import com.gabrielfv.ibmtest.libraries.design.widgets.TextInputEditText
 import com.gabrielfv.ibmtest.libraries.design.widgets.TextInputLayout
 import kotlinx.android.synthetic.main.list_item_selector_cell.view.*
 import kotlinx.android.synthetic.main.list_item_submit_cell.view.*
@@ -161,12 +162,10 @@ class FormCellsAdapter(
 
             itemView.apply {
                 wrapperTextInput.hint = cellField.cell.message
-                wrapperTextInput.editText?.let { editText ->
-                    editText.removeTextChangedListener(phoneNumberWatcher)
-                    editText.removeTextChangedListener(watcher)
-                    applyEditTextRules(wrapperTextInput, editText, cellField.input as TextField)
-                    supplyInputIfExists(editText, cellField)
-                }
+
+                applyEditTextRules(wrapperTextInput, textInput, cellField.input as TextField)
+                supplyInputIfExists(textInput, cellField)
+
                 wrapperTextInput.applyTopMargin(cellField.cell)
                 considerListenValidations(wrapperTextInput, cellField.cell.typefield)
                 wrapperTextInput.setEndIconOnClickListener {
@@ -181,14 +180,13 @@ class FormCellsAdapter(
         }
 
         fun clearWatchers() {
-            itemView.wrapperTextInput.editText?.let { editText ->
-                editText.removeTextChangedListener(phoneNumberWatcher)
-                editText.removeTextChangedListener(watcher)
+            itemView.textInput.let { editText ->
+                editText.clearTextChangedListeners()
                 watcher = null
             }
         }
 
-        private fun applyEditTextRules(wrapper: TextInputLayout, editText: EditText, field: TextField) {
+        private fun applyEditTextRules(wrapper: TextInputLayout, editText: TextInputEditText, field: TextField) {
             editText.inputType = when (type) {
                 Cell.DataType.TEXT -> InputType.TYPE_TEXT_VARIATION_PERSON_NAME
                 Cell.DataType.EMAIL -> InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
@@ -198,15 +196,18 @@ class FormCellsAdapter(
 
             editText.setText(field.text)
 
-            watcher = FieldWatcher()
-            editText.addTextChangedListener(watcher)
+            editText.clearTextChangedListeners()
+            watcher = FieldWatcher().also { watcher ->
+                editText.addSingleTextChangedListener(watcher)
+            }
 
+            editText.filters = arrayOf()
             if (type == Cell.DataType.EMAIL) {
                 editText.setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus) validator.validateEmail(editText.text.toString())
                 }
             } else if (type == Cell.DataType.PHONE) {
-                editText.addTextChangedListener(PhoneWatcher())
+                editText.addSingleTextChangedListener(PhoneWatcher())
                 editText.filters = arrayOf(InputFilter.LengthFilter(PHONE_MAX_LENGTH))
                 editText.setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus) validator.validatePhone(editText.text.toString())
@@ -214,7 +215,7 @@ class FormCellsAdapter(
             } else {
                 editText.setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus) {
-                        if (editText.text.isNotEmpty()) wrapper.setSuccess()
+                        if (editText.text?.isNotEmpty() == true) wrapper.setSuccess()
                         else wrapper.setError()
                     }
                 }

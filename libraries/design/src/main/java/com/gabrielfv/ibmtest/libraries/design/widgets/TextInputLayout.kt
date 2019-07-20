@@ -3,6 +3,7 @@ package com.gabrielfv.ibmtest.libraries.design.widgets
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.widget.EditText
 import androidx.core.content.res.ResourcesCompat
 import com.gabrielfv.ibmtest.libraries.design.R
 import com.google.android.material.textfield.TextInputLayout
